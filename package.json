@@ -11,6 +11,13 @@
   },
   "author": "Markus Dulghier <markus@dulghier.com> (http://www.trigo.at/)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/contentpool/logentries-api.git"
+  },
+   "bugs": {
+    "url": "https://bitbucket.org/contentpool/logentries-api/issues"
+  },
   "dependencies": {
     "request": "~2.34.0",
     "optimist": "~0.6.1",
