@@ -1,0 +1,15 @@
+{
+  "name": "logentries-api",
+  "version": "0.0.1",
+  "description": "Unofficial wrapper for the logentries HTTP API, to create servers and logs programmatically",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Markus Dulghier <markus@dulghier.com> (http://www.trigo.at/)",
+  "license": "MIT",
+  "dependencies": {
+    "request": "~2.34.0",
+    "optimist": "~0.6.1"
+  }
+}

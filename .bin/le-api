@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+
+var def = require('optimist')
+	.usage('Usage: $0')
+	.demand('accountKey')
+	.alias('accountKey', 'k')
+	.describe('accountKey', 'LogEntries Account Key');
+
+if (process.env.LE_ACCOUNT_KEY) {
+	def.default('accountKey', process.env.LE_ACCOUNT_KEY);
+}
+
+var argv = def.argv;
+
+var logEntriesApi = require('../index')({ accountKey: argv.accountKey });
+
+if (argv._.length === 0 
+	|| (argv._.length > 0 && argv._[0] === 'register' && argv._.length !== 2)
+	|| (argv._.length > 0 && argv._[0] === 'createlog' && argv._.length !== 4 )) {
+	console.log('Available commands: ');
+	console.log('    hosts                                 ... Lists all registered hosts');
+	console.log('    register <hostname>                   ... Registers a host');
+	console.log('    createlog <name> <type> <host key>    ... Creates a new log');
+	console.log('        possible types: udp, token');
+
+	return process.exit(0);
+}
+
+if (argv._[0] === 'hosts') {
+	logEntriesApi.getHosts(function(err, results) {
+		if (err) {
+			console.error(err);
+			return process.exit(1);	
+		}
+		var hosts = [];
+
+		for(var i in results.hosts) {
+			var host = results.hosts[i];
+			hosts.push({name: host.name, key: host.key});
+		}
+		console.log('%j', hosts);
+		return process.exit(0);
+	})
+}
+
+if (argv._[0] === 'register') {
+	logEntriesApi.registerHost(argv._[1], function(err, results) {
+		if (err) {
+			console.error(err);
+			return process.exit(1);	
+		}
+		console.log('%j', {name: results.host.name, key: results.host.key});
+		return process.exit(0);
+	})
+}
+
+if (argv._[0] === 'createlog') {
+	logEntriesApi.createLog(argv._[1], argv._[2], argv._[3], function(err, results) {
+		if (err) {
+			console.error(err);
+			return process.exit(1);	
+		}
+		console.log('%j', {name: results.log.name, key: results.log.key});
+		return process.exit(0);
+	})
+}
