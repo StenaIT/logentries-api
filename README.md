@@ -7,7 +7,7 @@ Can be used as a Node.js module and as a command line utility to
 - create logs
 - fetch infos abouts hosts and logs from logentries.com
 
-This module can not be used to write logs to logentries.com. If you look for a node module to write log, I recommend [`node-logentries`](https://www.npmjs.org/package/node-logentries).
+This module can not be used to write logs to logentries.com. If you look for a node module to write logs, I recommend [`node-logentries`](https://www.npmjs.org/package/node-logentries).
 
 #### Disclaimer
 This module is in no way related to logentries.com Inc. and is not supported by them.
