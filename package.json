@@ -1,7 +1,7 @@
 {
   "name": "logentries-api",
   "version": "0.0.1",
-  "description": "Unofficial wrapper for the logentries HTTP API, to create servers and logs programmatically",
+  "description": "Unofficial wrapper for the logentries HTTP API",
   "main": "./index.js",
   "bin": {
     "le-api": "./.bin/le-api"
