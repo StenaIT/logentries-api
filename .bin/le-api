@@ -19,6 +19,7 @@ if (argv._.length === 0
 	|| (argv._.length > 0 && argv._[0] === 'createlog' && argv._.length !== 4 )) {
 	console.log('Available commands: ');
 	console.log('    hosts                                 ... Lists all registered hosts');
+	console.log('    host <hostname>                       ... Get host key by name');
 	console.log('    register <hostname>                   ... Registers a host');
 	console.log('    createlog <name> <type> <host key>    ... Creates a new log');
 	console.log('        possible types: udp, token');
@@ -39,6 +40,22 @@ if (argv._[0] === 'hosts') {
 			hosts.push({name: host.name, key: host.key});
 		}
 		console.log('%j', hosts);
+		return process.exit(0);
+	})
+}
+
+if (argv._[0] === 'host') {
+	logEntriesApi.getHost(argv._[1], function(err, results) {
+		if (err) {
+			console.error(err);
+			return process.exit(1);	
+		}
+		if (!results) {
+			console.log('%j', {});
+		}
+		else {
+			console.log('%j', {key: results.key});
+		}
 		return process.exit(0);
 	})
 }

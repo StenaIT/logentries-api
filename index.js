@@ -1,4 +1,5 @@
 var request = require('request');
+require('array.prototype.find');
 
 var sources = {
 	token: 'token',
@@ -29,6 +30,16 @@ module.exports = function(options) {
 				load_hosts: 1,
 				user_key: options.accountKey
 			}, cb);
+		},
+
+		getHost: function(hostname, cb) {
+			this.getHosts(function(err, result) {
+				if (err) return cb(err);
+				var host = result.hosts.find(function(host) {
+					return host.name === hostname;
+				});
+				return cb(null, host);
+			});
 		},
 
 		registerHost: function(host, cb) {
