@@ -1,6 +1,6 @@
 {
   "name": "logentries-api",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Unofficial wrapper for the logentries HTTP API",
   "main": "./index.js",
   "bin": {
