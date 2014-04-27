@@ -1,5 +1,7 @@
 # Logentries API
 
+![](https://www.codeship.io/projects/e9117250-b06c-0131-9f39-4a2e83961998/status)
+
 ## Unofficial HTTP API Wrapper
 
 Can be used as a Node.js module and as a command line utility to
