@@ -2,7 +2,10 @@
   "name": "logentries-api",
   "version": "0.0.1",
   "description": "Unofficial wrapper for the logentries HTTP API, to create servers and logs programmatically",
-  "main": "index.js",
+  "main": "./index.js",
+  "bin": {
+    "le-api": "./.bin/le-api"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
