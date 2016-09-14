@@ -58,13 +58,10 @@ module.exports = function(options) {
 				request: 'new_log',
 				user_key: options.accountKey,
 				host_key: hostKey,
-				source: sources.udp,
+				source: sources[type],
 				name: name,
 				retention: '-1'
 			}, cb);
 		}
 	};
 };
-
-
-
